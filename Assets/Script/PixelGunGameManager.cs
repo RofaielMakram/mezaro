@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 public class PixelGunGameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    GameObject playerPrefab;
+    GameObject [] playerPrefab;
+
+    [SerializeField] int numCharacter;
 
 
     public static PixelGunGameManager instance;
@@ -31,7 +33,7 @@ public class PixelGunGameManager : MonoBehaviourPunCallbacks
             if (playerPrefab != null) 
             {
                 int randompoint = Random.Range(-20, 20);
-                PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(randompoint, 0, randompoint), Quaternion.identity);
+                PhotonNetwork.Instantiate(playerPrefab[numCharacter].name, new Vector3(randompoint, 0, randompoint), Quaternion.identity);
             } 
         }
     }
@@ -61,4 +63,18 @@ public class PixelGunGameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
+
+    public void select1()
+    {
+        numCharacter = 0;
+    }
+    public void select2()
+    {
+        numCharacter = 1;
+    }
+    public void select3()
+    {
+        numCharacter = 2;
+    }
+
 }
