@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class LaunchManager : MonoBehaviourPunCallbacks
 {
+    public GameObject FirstUiOnlineOffline;
     public GameObject EnterGamePanel;
     public GameObject ConnectionStatusPanel;
     public GameObject lobbypanel;
@@ -18,7 +19,8 @@ public class LaunchManager : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        EnterGamePanel.SetActive(true);
+        FirstUiOnlineOffline.SetActive(true);
+        EnterGamePanel.SetActive(false);
         ConnectionStatusPanel.SetActive(false);
         lobbypanel.SetActive(false);
     }
