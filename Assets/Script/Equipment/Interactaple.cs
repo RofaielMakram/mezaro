@@ -9,7 +9,6 @@ public class Interactaple : MonoBehaviour
 
     Transform player;
 
-
     private void Update()
     {
         if (isFocus) 
