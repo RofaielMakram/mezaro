@@ -16,7 +16,7 @@ public class EquipmentManager : MonoBehaviour
     public SkinnedMeshRenderer targetMesh;   // دة بيشاور اللاعب
     [SerializeField]Equipment[] currentEquipment;
 
-    //[SerializeField]SkinnedMeshRenderer[] currentMeshes;
+    [SerializeField]SkinnedMeshRenderer[] currentMeshes;
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
@@ -28,7 +28,7 @@ public class EquipmentManager : MonoBehaviour
 
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
-       // currentMeshes = new SkinnedMeshRenderer[numSlots];
+        currentMeshes = new SkinnedMeshRenderer[numSlots];
     }
 
     public void Equip(Equipment newItems)
@@ -53,7 +53,7 @@ public class EquipmentManager : MonoBehaviour
         newMesh.transform.parent = targetMesh.transform;
         newMesh.bones = targetMesh.bones;
         newMesh.rootBone = targetMesh.rootBone;
-        //currentMeshes[SlotIndex] = newMesh;
+        currentMeshes[SlotIndex] = newMesh;
     }
 
     public Equipment Unequip(int slotIndex) 
