@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UbdateUI;
+        inventory.onItemChangedCallback += UbdateUI; // UbdateUiكل مهيحصل تغيير في (الانفينتوري) هيستدعي    
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }

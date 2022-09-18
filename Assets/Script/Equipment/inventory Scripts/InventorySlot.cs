@@ -14,8 +14,8 @@ public class InventorySlot : MonoBehaviour
     {
         item = newItem;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
+        icon.sprite = item.icon; // item هنا بياخد صورة الايتم اللي بتظهر في الحقيبة من 
+        icon.enabled = true; // وبعد مخد الصورة من هناك يروح مفعل الصورة لان 
 
         removeButton.interactable = true;
 
