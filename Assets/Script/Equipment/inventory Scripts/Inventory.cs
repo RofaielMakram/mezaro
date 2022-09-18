@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    #region Singleton
+    // (ItemPickup)هنا بقي استخدمنا طريقة الديزاين باترن دية عشان نعمل اتصال مبين الكلاس بتاعنا و 
+    #region Singleton 
     public static Inventory instance;
 
     private void Awake()
@@ -23,20 +24,21 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>();
+    public List<Item> items = new List<Item>(); // ده مخزون اللاعب في الجيم (1
 
     public int Space = 20;
     public bool Add(Item item) 
     {
-        if (!item.isDefaultItem) 
+        if (!item.isDefaultItem) // (2  if (isDefaultItem)=true   
         {
             if (items.Count >= Space) 
             {
-                Debug.Log("Not enough room");
+                Debug.Log("Not enough room"); // (4 (isDefaultItem)=false هنا بقي لو الشنطة اتملت يبقي خلي ال 
+
                 return false;
             }
 
-            items.Add(item);
+            items.Add(item); // (3 لو الشرط اتنفذ ضيف الايتم ديه في المخزون
             //do not understand
             if (onItemChangedCallback != null)
                 onItemChangedCallback.Invoke();
