@@ -12,13 +12,21 @@ public class StuffUI : MonoBehaviour
 
     private void Start()
     {
-       // slots = EquipParent.GetComponentInChildren<InventorySlot>();
+        slots = EquipParent.GetComponentsInChildren<InventorySlot>();
     }
     void Update()
     {
         if (Input.GetButtonDown("Stuff"))
         {
             stuff.SetActive(!stuff.activeSelf);
+        }
+    }
+
+    void UpdateUI() 
+    {
+        for (int i=0; i < slots.Length;i++) 
+        {
+
         }
     }
 }
