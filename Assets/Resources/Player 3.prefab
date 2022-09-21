@@ -698,10 +698,10 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: dive
   - Type: 9
-    SynchronizeType: 2
+    SynchronizeType: 0
     Name: drawWeapon
   - Type: 9
-    SynchronizeType: 2
+    SynchronizeType: 0
     Name: sheetWeapon
   - Type: 4
     SynchronizeType: 2
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41a75829a6aa7641961ab2b03239bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 3058857368555691540}
   scriptsPlayer:
   - {fileID: 8736910643157339076}
 --- !u!114 &8852806807106436109
