@@ -26,7 +26,9 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>(); // ده مخزون اللاعب في الجيم (1
 
-    public int Space = 20;
+    public int Space = 10;
+
+    // EquipmentManager.Unequip (add old item to inventory )
     public bool Add(Item item) 
     {
         if (!item.isDefaultItem) // (2  if (isDefaultItem)=true   
@@ -48,11 +50,12 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item item) 
+    public void Remove(Item item) // inventorySlot.OnRemoveButton UI
     {
         items.Remove(item);
         //do not understand
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
     }
+
 }

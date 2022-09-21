@@ -29,38 +29,59 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         currentMeshes = new SkinnedMeshRenderer[numSlots];
+        print(numSlots);
     }
 
     public void Equip(Equipment newItems)
     {
-        int SlotIndex = (int)newItems.equipSlot; // عدد انواع الدروع اللي بتتلبس مثال: الخوزة الدرع الحذاء....الخ
-
-       
-
-        Equipment oldItem = null;
-
-
+        int SlotIndex = (int)newItems.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
         
 
+        Equipment oldItem = null;
+        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItems.mesh);
         if (onEquipmentChanged != null) 
         {
-            onEquipmentChanged.Invoke(newItems, oldItem);
+            onEquipmentChanged.Invoke(newItems, oldItem);//بشغل الميسود لو مش موجودة
         }
 
-        currentEquipment[SlotIndex] = newItems;
-        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItems.mesh);
+        if (currentEquipment[SlotIndex] == null)
+        {
+            currentEquipment[SlotIndex] = newItems;
+            
 
-        newMesh.transform.parent = targetMesh.transform;
-        newMesh.bones = targetMesh.bones;
-        newMesh.rootBone = targetMesh.rootBone;
-        currentMeshes[SlotIndex] = newMesh;
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+            currentMeshes[SlotIndex] = newMesh;
+        }
+        else 
+        {
+            oldItem = currentEquipment[SlotIndex];
+            inventory.Add(oldItem);
+
+            currentEquipment[SlotIndex] = null;
+            
+            Destroy(currentMeshes[SlotIndex].gameObject);
+
+            currentEquipment[SlotIndex] = newItems;
+            currentMeshes[SlotIndex] = newMesh;
+
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+
+            
+
+
+        }
+        
     }
 
     public Equipment Unequip(int slotIndex) 
     {
         if (currentEquipment[slotIndex] != null) 
         {
-           // Destroy(currentMeshes[slotIndex].gameObject);
+            Destroy(currentMeshes[slotIndex].gameObject); // لم بدوس يو بيشيل كل التجهيزات اللي علي اللاعب 
 
 
             // أضف العنصر في المخزون
@@ -73,7 +94,7 @@ public class EquipmentManager : MonoBehaviour
             // تمت إزالة المعدات لذلك نقوم بتشغيل رد الاتصال
             if (onEquipmentChanged != null)
             {
-                onEquipmentChanged.Invoke(null, oldItem); ;
+                onEquipmentChanged.Invoke(null, oldItem);
             }
             return oldItem;
         }

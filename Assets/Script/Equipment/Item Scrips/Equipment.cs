@@ -17,4 +17,5 @@ public class Equipment : Item
         RemoveFromInventory();
     }
 }
-public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield, Feet }
+//public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield, Feet }
+public enum EquipmentSlot { Head, TopArmor, BottomArmor, Weapon, Shield}// (0,1,2,3,4)

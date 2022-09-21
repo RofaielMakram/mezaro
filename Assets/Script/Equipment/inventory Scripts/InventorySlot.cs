@@ -30,12 +30,17 @@ public class InventorySlot : MonoBehaviour
 
     }
 
-    public void OnRemoveButton() 
+    public void OnRemoveButton() // RemoveButton ui
     {
-        Inventory.instance.Remove(item);
+        Inventory.instance.Remove(item); // زرار حذف الاداة من الحقيبة (delet list items from inventory )
+        item = null;
+        icon.sprite = null;
+        icon.enabled = false;
+        removeButton.interactable = false;
+        print("ok Delet");
     }
-
-    public void UseItem() 
+        
+    public void UseItem() // item button ui
     {
         item.Use();
     }

@@ -11,7 +11,7 @@ public class Item : ScriptableObject
     public bool isDefaultItem = false;
 
 
-    public virtual void Use()
+    public virtual void Use()// inventory slot (use item(when click item button)) ui
     {
         // Use the Item
         // Something might hapen
