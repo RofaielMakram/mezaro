@@ -39,6 +39,7 @@ public class EquipmentManager : MonoBehaviour
 
         Equipment oldItem = null;
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItems.mesh);
+
         if (onEquipmentChanged != null) 
         {
             onEquipmentChanged.Invoke(newItems, oldItem);//بشغل الميسود لو مش موجودة
@@ -56,23 +57,20 @@ public class EquipmentManager : MonoBehaviour
         }
         else 
         {
-            oldItem = currentEquipment[SlotIndex];
-            inventory.Add(oldItem);
+            oldItem = currentEquipment[SlotIndex];  
+            inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيسة تاني
 
-            currentEquipment[SlotIndex] = null;
-            
-            Destroy(currentMeshes[SlotIndex].gameObject);
+            currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
 
-            currentEquipment[SlotIndex] = newItems;
-            currentMeshes[SlotIndex] = newMesh;
+            Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
 
+            currentEquipment[SlotIndex] = newItems; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
+            currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
+
+            // هنا بضبط new mesh equipment on player and riging 
             newMesh.transform.parent = targetMesh.transform;
             newMesh.bones = targetMesh.bones;
             newMesh.rootBone = targetMesh.rootBone;
-
-            
-
-
         }
         
     }
