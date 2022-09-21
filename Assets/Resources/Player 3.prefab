@@ -644,8 +644,8 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 6848446845657119622}
-  - {fileID: 6848446845657119622}
-  sceneViewId: 1
+  - {fileID: 7054546496215453966}
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &6848446845657119622
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41a75829a6aa7641961ab2b03239bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 3058857368555691540}
+  playerCamera: {fileID: 0}
   scriptsPlayer:
   - {fileID: 8736910643157339076}
 --- !u!114 &8852806807106436109
