@@ -2733,7 +2733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stuff: {fileID: 1537584458}
-  EquipParent: {fileID: 0}
+  EquipParent: {fileID: 862626955}
   slots: []
 --- !u!1 &1537584458
 GameObject:
