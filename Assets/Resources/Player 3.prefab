@@ -717,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8374922045775667021}
   startHealth: 100
+  animator: {fileID: 4036770281160098242}
 --- !u!114 &1434382304669150236
 MonoBehaviour:
   m_ObjectHideFlags: 0

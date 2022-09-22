@@ -12,6 +12,9 @@ public class TakingDamage : MonoBehaviourPunCallbacks
 
     private float health;
     public float startHealth = 100;
+
+    [SerializeField]Animator animator;
+
     void Start()
     {
         health = startHealth;
@@ -33,15 +36,21 @@ public class TakingDamage : MonoBehaviourPunCallbacks
         if (health <= 0f) 
         {
             //Die
-            Die();
+            ANIM();
         }
     }
 
-    void Die() 
+    public void Die() 
     {
         if (photonView.IsMine) 
         {
             PixelGunGameManager.instance.LeaveRoom();
         }
     }
+
+    void ANIM()
+    {
+        animator.SetBool("Die", true);
+    }
+
 }
