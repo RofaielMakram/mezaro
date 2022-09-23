@@ -34,7 +34,13 @@ public class StuffUI : MonoBehaviour
         for (int i = 0; i < equipmentManager.currentEquipment.Length; i++)
         {
             if (equipmentManager.currentEquipment[i] != null)
+            {
                 slots[i].AddItem(equipmentManager.currentEquipment[i]);
+            }
+            else 
+            {
+                slots[i].ClearSlot();
+            }
         }
     }
 }
