@@ -41,7 +41,6 @@ public class InventoryUI : MonoBehaviour
                 slots[i].AddItem(inventory.items[i]); 
             }else 
             {
-                print("ok Delet");
                 slots[i].ClearSlot();// (لحد ميوصل للعدد اللي متخزن في (كومنت رقم(1
             }
         }

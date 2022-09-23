@@ -14,14 +14,21 @@ public class EquipmentManager : MonoBehaviour
 
     #endregion
     public SkinnedMeshRenderer targetMesh;   // دة بيشاور اللاعب
-    [SerializeField]Equipment[] currentEquipment;
+    public Equipment[] currentEquipment;
 
     [SerializeField]SkinnedMeshRenderer[] currentMeshes;
+
+   
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
+    public delegate void OnStuffChanged(); // test
+    public OnStuffChanged onEquipChanged;//test
+
     Inventory inventory;
+
+
     private void Start()
     {
         inventory = Inventory.instance;
@@ -44,6 +51,7 @@ public class EquipmentManager : MonoBehaviour
         {
             onEquipmentChanged.Invoke(newItems, oldItem);//بشغل الميسود لو مش موجودة
         }
+       
 
         if (currentEquipment[SlotIndex] == null)
         {
@@ -90,12 +98,15 @@ public class EquipmentManager : MonoBehaviour
             currentEquipment[slotIndex] = null;
 
             // تمت إزالة المعدات لذلك نقوم بتشغيل رد الاتصال
+           
+
             if (onEquipmentChanged != null)
             {
                 onEquipmentChanged.Invoke(null, oldItem);
             }
             return oldItem;
         }
+       
         return null;
     }
 
