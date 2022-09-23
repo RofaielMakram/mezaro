@@ -75,6 +75,12 @@ public class ArcherController : MonoBehaviour
             maxRunSpeed = 3;
             animator.SetBool("sprint", false);
         }
+
+        if(Input.GetButton("Fire1"))
+        {
+             maxRunSpeed = 3;
+            animator.SetBool("sprint", false);
+        }
     }
 
 
