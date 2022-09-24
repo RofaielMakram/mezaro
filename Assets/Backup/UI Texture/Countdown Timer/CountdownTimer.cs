@@ -19,9 +19,16 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             timeValue = 0;
-
+            
             
         }
+
+        if (timeValue <=0)
+        {
+            PixelGunGameManager.instance.LeaveRoom();
+            
+        }
+
 
         DisplayTime(timeValue);
     }
