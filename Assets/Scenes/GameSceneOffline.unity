@@ -244,11 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
+  - {fileID: 4934541041679446698, guid: 34e72e668ad2dc541b84a66783667003, type: 3}
   - {fileID: 9209846719362279991, guid: 24f1e4a7d82d7ba4da985e4f7dbef120, type: 3}
-  - {fileID: 315998054211507438, guid: 49077a79924e2f445a88180e10b5877c, type: 3}
   - {fileID: 4934541041679446698, guid: 34e72e668ad2dc541b84a66783667003, type: 3}
   spawnPoint: {fileID: 0}
-  label: {fileID: 0}
 --- !u!4 &416692915
 Transform:
   m_ObjectHideFlags: 0

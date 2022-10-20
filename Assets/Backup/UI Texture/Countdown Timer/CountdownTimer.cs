@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float timeValue=50;
+    public float timeValue=20;
     public Text timerText;
 
     void Update ()
@@ -18,14 +19,9 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             timeValue = 0;
-        }
 
-        if (timeValue <=0)
-        {
-            PixelGunGameManager.instance.LeaveRoom();
             
         }
-
 
         DisplayTime(timeValue);
     }

@@ -24,7 +24,7 @@ public class TakingDamage : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        Damegechangecolor();
+        
     }
 
     [PunRPC]
@@ -51,20 +51,6 @@ public class TakingDamage : MonoBehaviourPunCallbacks
     void ANIM()
     {
         animator.SetBool("Die", true);
-    }
-
-
-    void Damegechangecolor()
-    {
-        if (health == 60)
-        {
-            healthBar.GetComponent<Image>().color = new Color32(255,159,0,255);
-        }
-
-        if (health <= 30)
-        {
-            healthBar.GetComponent<Image>().color = new Color32(255,0,0,255);
-        }
     }
 
 }
