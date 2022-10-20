@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
@@ -13,10 +14,13 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
+        
         inventory = Inventory.instance;// singleton بيعرفه بأستخدام ال 
         inventory.onItemChangedCallback += UbdateUI; // UbdateUiكل مهيحصل تغيير في (الانفينتوري) هيستدعي    
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>(); // inventorySlot  بيحتوي علي child هنا بيتم معرفة كام
+        // inventorySlot  بيحتوي علي child هنا بيتم معرفة كام
+        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+
     }
 
     void Update()

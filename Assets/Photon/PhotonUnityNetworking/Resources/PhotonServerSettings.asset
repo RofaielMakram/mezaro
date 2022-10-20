@@ -41,6 +41,14 @@ MonoBehaviour:
   - RespawnSpaceship
   - TakeDamage
   - RPC_AddCharacter
+  - PickUp
+  - die
+  - Equip
+  - Use
+  - i
+  - handleMesh
+  - f
+  - settingEquip
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
