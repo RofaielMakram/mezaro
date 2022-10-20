@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
 {
-   public GameObject[] Characters;
+   public GameObject[] characters;
    public int selectedCharacter = 0;
 
 
     public void StartGame()
     {
         PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
     public void select1()
     {
