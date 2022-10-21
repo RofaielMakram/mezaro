@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-
 
 [CreateAssetMenu(fileName = "New Equipment", menuName ="Inventory/Equipment")]
 public class Equipment : Item
@@ -11,12 +9,10 @@ public class Equipment : Item
     public SkinnedMeshRenderer mesh;
 
     public override void Use()
-    { 
+    {
         base.Use();
         // equip the item
-        
         EquipmentManager.instance.Equip(this);
-        
         // remove from inventory
         RemoveFromInventory();
     }

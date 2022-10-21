@@ -5,7 +5,7 @@ using Photon.Pun;
 
 
 public class PlayerView : MonoBehaviour
-{  
+{
     PhotonView PV;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private MonoBehaviour[] scriptsPlayer;
@@ -21,9 +21,7 @@ public class PlayerView : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            if(playerCamera!=null)
-                playerCamera.SetActive(true);
-
+            playerCamera.SetActive(true);
             foreach (MonoBehaviour item in scriptsPlayer)
             {
                 item.enabled = true;

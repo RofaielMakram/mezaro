@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
     public Button removeButton;
 
+     Item item;
 
-    Item item;
-
-    
     public void AddItem(Item newItem) 
     {
         item = newItem;
@@ -47,5 +44,4 @@ public class InventorySlot : MonoBehaviour
     {
         item.Use();
     }
-
 }
