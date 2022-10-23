@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using System.IO;
+using ExitGames.Client.Photon;
 
-public class EquipmentManager : MonoBehaviour
+public class EquipmentManager : MonoBehaviour, IOnEventCallback
 {
     #region Singletoon
     public static EquipmentManager instance;
@@ -13,20 +17,21 @@ public class EquipmentManager : MonoBehaviour
     }
 
     #endregion
+    public GameObject Player;
     public SkinnedMeshRenderer targetMesh;   // دة بيشاور اللاعب
     public Equipment[] currentEquipment;
 
-    [SerializeField]SkinnedMeshRenderer[] currentMeshes;
 
-   
+    [SerializeField] SkinnedMeshRenderer[] currentMeshes;
+
+
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    public delegate void OnStuffChanged(); // test
-    public OnStuffChanged onEquipChanged;//test
-
     Inventory inventory;
+
+    PhotonView pv;
 
 
     private void Start()
@@ -36,56 +41,110 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         currentMeshes = new SkinnedMeshRenderer[numSlots];
+
+        pv = GetComponent<PhotonView>();
         print(numSlots);
     }
 
-    public void Equip(Equipment newItems)
+
+
+
+    int SlotIndex;
+    // GameObject meshEquip;
+    [SerializeField] SkinnedMeshRenderer newMesh;
+    [SerializeField] GameObject objectMesh;
+    public byte MoveUnitsToTargetPositionEventCode = 1;
+
+    private void OnEnable()
     {
-        int SlotIndex = (int)newItems.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
-        
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+
+
+
+    void settingEquip()
+    {
+        newMesh.transform.parent = targetMesh.transform;
+        // newMesh.bones = targetMesh.bones;
+        //newMesh.rootBone = targetMesh.rootBone;
+        //currentMeshes[SlotIndex] = newMesh;
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(MoveUnitsToTargetPositionEventCode, newMesh.transform.parent, raiseEventOptions, SendOptions.SendReliable);
+    }
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+        if (eventCode == MoveUnitsToTargetPositionEventCode)
+        {
+            Object o = (Object)photonEvent.CustomData;
+            Debug.Log("yessssssssssssssssss");
+        }
+        else
+        {
+            Debug.Log("noooooooooooooooooo");
+        }
+    }
+    public void Equip(Equipment newItem)
+    {
+        SlotIndex = (int)newItem.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
+
+
+        //photon instantiate
+        objectMesh = PhotonNetwork.Instantiate(Path.Combine(newItem.mesh.name), new Vector3(0, 0, 0), Quaternion.identity, 0);
+        newMesh = objectMesh.GetComponent<SkinnedMeshRenderer>();
+        //end share photon
+
+        //offline instantiate
+        // newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+
+
 
         Equipment oldItem = null;
-        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItems.mesh);
 
-        if (onEquipmentChanged != null) 
+        if (onEquipmentChanged != null)
         {
-            onEquipmentChanged.Invoke(newItems, oldItem);//بشغل الميسود لو مش موجودة
+            onEquipmentChanged.Invoke(newItem, oldItem);//بشغل الميسود لو مش موجودة
         }
-       
+
 
         if (currentEquipment[SlotIndex] == null)
         {
-            currentEquipment[SlotIndex] = newItems;
-            
+            currentEquipment[SlotIndex] = newItem;
+            //pv.RPC("settingEquip", RpcTarget.AllBuffered);
 
-            newMesh.transform.parent = targetMesh.transform;
-            newMesh.bones = targetMesh.bones;
-            newMesh.rootBone = targetMesh.rootBone;
-            currentMeshes[SlotIndex] = newMesh;
+
+            settingEquip();
+
         }
-        else 
-        {
-            oldItem = currentEquipment[SlotIndex];  
-            inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيسة تاني
+        /*     else
+             {
+                 oldItem = currentEquipment[SlotIndex];
+                 inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيبة تاني
 
-            currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
+                 currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
 
-            Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
+                 Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
 
-            currentEquipment[SlotIndex] = newItems; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
-            currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
+                 currentEquipment[SlotIndex] = newItem; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
+                 currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
 
-            // هنا بضبط new mesh equipment on player and riging 
-            newMesh.transform.parent = targetMesh.transform;
-            newMesh.bones = targetMesh.bones;
-            newMesh.rootBone = targetMesh.rootBone;
-        }
-        
+                 // هنا بضبط new mesh equipment on player and riging 
+                 newMesh.transform.parent = targetMesh.transform;
+                 newMesh.bones = targetMesh.bones;
+                 newMesh.rootBone = targetMesh.rootBone;
+             }*/
     }
 
-    public Equipment Unequip(int slotIndex) 
+
+    public Equipment Unequip(int slotIndex)
     {
-        if (currentEquipment[slotIndex] != null) 
+        if (currentEquipment[slotIndex] != null)
         {
             Destroy(currentMeshes[slotIndex].gameObject); // لم بدوس يو بيشيل كل التجهيزات اللي علي اللاعب 
 
@@ -98,7 +157,7 @@ public class EquipmentManager : MonoBehaviour
             currentEquipment[slotIndex] = null;
 
             // تمت إزالة المعدات لذلك نقوم بتشغيل رد الاتصال
-           
+
 
             if (onEquipmentChanged != null)
             {
@@ -106,25 +165,30 @@ public class EquipmentManager : MonoBehaviour
             }
             return oldItem;
         }
-       
+
         return null;
     }
 
-    
-    public void UnequipAll() 
+
+    public void UnequipAll()
     {
-        for (int i=0; i < currentEquipment.Length; i++) 
+        for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
         }
     }
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U)) //  هيشيل كل الدروع اللي لبستها
         {
             UnequipAll();
         }
-            
+        Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player != null)
+        {
+            targetMesh = Player.GetComponentInChildren<SkinnedMeshRenderer>();
+        }
     }
+
 }
