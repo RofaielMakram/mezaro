@@ -13,8 +13,13 @@ public class PlayerView : MonoBehaviour
     // Start is called before the first frame 
     void Start()
     {
-        PV = GetComponent<PhotonView>();
-        Intialize();
+        if (PhotonNetwork.IsConnected)
+        {
+            PV = GetComponent<PhotonView>();
+            Intialize();
+        }
+        else return;
+       
     }
 
     void Intialize()

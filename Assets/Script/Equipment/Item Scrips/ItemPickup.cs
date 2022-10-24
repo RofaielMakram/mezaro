@@ -23,12 +23,17 @@ public class ItemPickup : Interactaple
 
         if (wasPickedUp)
         {
-            //if (pv.IsMine)
-            //{
-            pv = GetComponent<PhotonView>();
-            pv.RPC("die", RpcTarget.AllBuffered);
-            Debug.Log("PV Is Mine");
-            //}
+            if (PhotonNetwork.IsConnected)
+            {
+                pv = GetComponent<PhotonView>();
+                pv.RPC("die", RpcTarget.AllBuffered);
+                Debug.Log("PV Is Mine");
+            }
+            else 
+            {
+                Debug.Log("Destroy item in ground");
+                Destroy(gameObject);
+            }
         }
     }
 

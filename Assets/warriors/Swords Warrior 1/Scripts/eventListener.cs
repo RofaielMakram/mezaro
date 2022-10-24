@@ -22,8 +22,7 @@ public class eventListener : MonoBehaviour
     public void AnimEventEnd()
     {
         _MngrAttack.CheckAttackPhase2();
-       
-        
+
     }
 
     public void damageEvent() 
