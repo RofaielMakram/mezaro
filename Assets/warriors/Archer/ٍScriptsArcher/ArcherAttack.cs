@@ -5,31 +5,31 @@ using UnityEngine;
 public class ArcherAttack : MonoBehaviour
 {
 
-    [SerializeField]
-    Animator animator;
+    // [SerializeField]
+    // Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    // // Start is called before the first frame update
+    // void Start()
+    // {
        
-    }
+    // }
 
-    // Update is called once per frame
-    void Update()
-    {
+    // // Update is called once per frame
+    // void Update()
+    // {
             
            
-        //fire
+    //     //fire
 
-        if(Input.GetButton("Fire1"))
-        {
-            Debug.Log("ok");
-            animator.SetBool("fire", true);
-        }
-        else
-        {
-            animator.SetBool("fire", false);
-        }
+    //     if(Input.GetButton("Fire1"))
+    //     {
+    //         Debug.Log("ok");
+    //         animator.SetBool("fire", true);
+    //     }
+    //     else
+    //     {
+    //         animator.SetBool("fire", false);
+    //     }
             
-    }
+    // }
 }

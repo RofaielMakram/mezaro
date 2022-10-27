@@ -8,7 +8,7 @@ public class FootStepsSound : MonoBehaviour
 
     public AudioClip footstep;
 
-    void footsound()
+    public void footsound()
     {
         source.clip = footstep;
         source.Play();

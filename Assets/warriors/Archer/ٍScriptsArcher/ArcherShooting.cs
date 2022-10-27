@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+
 public class ArcherShooting : MonoBehaviour
 {
     [SerializeField]
     Camera fbsCamera;
+
+    [SerializeField]
+    Animator animator;
+
+    public GameObject activeGameObject;
+    public GameObject disactiveGameObject;
+
 
 
 
@@ -14,6 +22,24 @@ public class ArcherShooting : MonoBehaviour
     void Start()
     {
         
+    }
+
+    void Update()
+    {
+            
+           
+        //fire
+
+        if(Input.GetButton("Fire1"))
+        {
+            Debug.Log("ok");
+            animator.SetBool("fire", true);
+        }
+        else
+        {
+            animator.SetBool("fire", false);
+        }
+            
     }
     
 
@@ -43,5 +69,16 @@ public class ArcherShooting : MonoBehaviour
         
         }
            
-    }   
+    }  
+
+    public void ArrowEvent()
+    {
+        activeGameObject.SetActive(true);
+
+    }
+
+    public void DisActiveArrowEvent()
+    {
+        disactiveGameObject.SetActive(false);
+    } 
 }

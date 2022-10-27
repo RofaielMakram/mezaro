@@ -28162,21 +28162,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.16666667
-    functionName: DisActiveArrowEvent
+    functionName: DisActiveArrow
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.16666667
-    functionName: firesound
+    functionName: firesoundEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.2
-    functionName: EventAnim
+    functionName: ShotingAnim
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
