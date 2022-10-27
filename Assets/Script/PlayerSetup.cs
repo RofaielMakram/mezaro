@@ -13,16 +13,16 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (photonView.IsMine)
-        {
-            transform.GetComponent<ArcherController>().enabled = true;
-            FPSCamera.GetComponent<Camera>().enabled = true;
-        }
-        else 
-        {
-            transform.GetComponent<ArcherController>().enabled = false;
-            FPSCamera.GetComponent<Camera>().enabled = false;
-        }
+        // if (photonView.IsMine)
+        // {
+        //     transform.GetComponent<ArcherController>().enabled = true;
+        //     FPSCamera.GetComponent<Camera>().enabled = true;
+        // }
+        // else 
+        // {
+        //     transform.GetComponent<ArcherController>().enabled = false;
+        //     FPSCamera.GetComponent<Camera>().enabled = false;
+        // }
 
         SetPlayerUI();
     }

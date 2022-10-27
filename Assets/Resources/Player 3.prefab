@@ -595,6 +595,7 @@ MonoBehaviour:
   playerCamera: {fileID: 3058857368555691540}
   scriptsPlayer:
   - {fileID: 8736910643157339076}
+  - {fileID: 1434382304669150236}
 --- !u!114 &6994788083698539615
 MonoBehaviour:
   m_ObjectHideFlags: 0
