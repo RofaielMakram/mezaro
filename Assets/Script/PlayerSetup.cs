@@ -29,9 +29,14 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
 
     void SetPlayerUI() 
     {
-        if (playerNameText != null) 
+        if (PhotonNetwork.IsConnected)
         {
-            playerNameText.text = photonView.Owner.NickName;
+            if (playerNameText != null)
+            {
+                playerNameText.text = photonView.Owner.NickName;
+            }
         }
+        else return;
+        
     }
 }
