@@ -59,11 +59,21 @@ public class ArcherShooting : MonoBehaviour
         {
 
             Debug.Log(_hit.collider.gameObject.name);
-
-            if (_hit.collider.gameObject.CompareTag("Player")&&!_hit.collider.gameObject.GetComponent<PhotonView>().IsMine)
+            if (!_hit.collider.gameObject.GetComponent<PhotonView>().IsMine && PhotonNetwork.IsConnected)
             {
-                _hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage",RpcTarget.AllBuffered,10f);
+                if (_hit.collider.gameObject.CompareTag("Player"))
+                {
+                    _hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 10f);
+                }
             }
+            else 
+            {
+                if (_hit.collider.gameObject.CompareTag("Player"))
+                {
+                    _hit.collider.gameObject.GetComponent<TakingDamage>().TakeDamage(10f);
+                }
+            }
+            
 
                 
         
