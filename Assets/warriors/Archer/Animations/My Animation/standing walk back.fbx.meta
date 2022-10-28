@@ -60,14 +60,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.25531915
-        functionName: footsound
+        functionName: footsoundEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.68085104
-        functionName: footsound
+        functionName: footsoundEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
