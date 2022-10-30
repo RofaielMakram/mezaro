@@ -15,7 +15,7 @@ public class LoadCharacter : MonoBehaviour
 
         //int spawnPoint = Random.Range(-20, 20);
         //GameObject clone = Instantiate(prefab, new Vector3(spawnPoint, 0, spawnPoint), Quaternion.identity);
-        GameObject clone = Instantiate(prefab, spawnPoint.transform.position, Quaternion.identity);
+        GameObject clone = Instantiate(prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         //label.text = prefab.name;
     }
 
