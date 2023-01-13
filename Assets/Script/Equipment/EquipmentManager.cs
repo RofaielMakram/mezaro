@@ -6,7 +6,7 @@ using Photon.Realtime;
 using System.IO;
 using ExitGames.Client.Photon;
 
-public class EquipmentManager : MonoBehaviour, IOnEventCallback
+public class EquipmentManager : MonoBehaviourPunCallbacks
 {
     #region Singletoon
     public static EquipmentManager instance;
@@ -17,6 +17,7 @@ public class EquipmentManager : MonoBehaviour, IOnEventCallback
     }
 
     #endregion
+    PlayerFindMesh playerFindMesh;
     public GameObject Player;
     public SkinnedMeshRenderer targetMesh;   // دة بيشاور اللاعب
     public Equipment[] currentEquipment;
@@ -31,9 +32,8 @@ public class EquipmentManager : MonoBehaviour, IOnEventCallback
 
     Inventory inventory;
 
-    PhotonView pv;
-
-
+    [SerializeField]
+    SkinnedMeshRenderer TopDefultCloth, BottomDefultCloth;
     private void Start()
     {
         inventory = Inventory.instance;
@@ -41,68 +41,30 @@ public class EquipmentManager : MonoBehaviour, IOnEventCallback
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         currentMeshes = new SkinnedMeshRenderer[numSlots];
-
-        pv = GetComponent<PhotonView>();
         print(numSlots);
+        //Control Clothes
+        Player = GameObject.FindGameObjectWithTag("Player");
+        TopDefultCloth = Player.GetComponent<ArcherController>().pant;
+        BottomDefultCloth = Player.GetComponent<ArcherController>().bra;
     }
-
-
 
 
     int SlotIndex;
-    // GameObject meshEquip;
-    [SerializeField] SkinnedMeshRenderer newMesh;
-    [SerializeField] GameObject objectMesh;
-    public byte MoveUnitsToTargetPositionEventCode = 1;
+    SkinnedMeshRenderer newMesh;
 
-    private void OnEnable()
-    {
-        PhotonNetwork.AddCallbackTarget(this);
-    }
-
-    private void OnDisable()
-    {
-        PhotonNetwork.RemoveCallbackTarget(this);
-    }
-
-
-
-    void settingEquip()
-    {
-        newMesh.transform.parent = targetMesh.transform;
-        // newMesh.bones = targetMesh.bones;
-        //newMesh.rootBone = targetMesh.rootBone;
-        //currentMeshes[SlotIndex] = newMesh;
-
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(MoveUnitsToTargetPositionEventCode, newMesh.transform.parent, raiseEventOptions, SendOptions.SendReliable);
-    }
-    public void OnEvent(EventData photonEvent)
-    {
-        byte eventCode = photonEvent.Code;
-        if (eventCode == MoveUnitsToTargetPositionEventCode)
-        {
-            Object o = (Object)photonEvent.CustomData;
-            Debug.Log("yessssssssssssssssss");
-        }
-        else
-        {
-            Debug.Log("noooooooooooooooooo");
-        }
-    }
+    
     public void Equip(Equipment newItem)
     {
         SlotIndex = (int)newItem.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
+        //   Test
+        if (SlotIndex == 2)
+             TopDefultCloth.enabled = false;
+           
+        else if (SlotIndex == 1)
+             BottomDefultCloth.enabled = false;
+            ///////////////////////////////////////
 
-
-        //photon instantiate
-        objectMesh = PhotonNetwork.Instantiate(Path.Combine(newItem.mesh.name), new Vector3(0, 0, 0), Quaternion.identity, 0);
-        newMesh = objectMesh.GetComponent<SkinnedMeshRenderer>();
-        //end share photon
-
-        //offline instantiate
-        // newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
-
+            newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
 
 
         Equipment oldItem = null;
@@ -116,31 +78,37 @@ public class EquipmentManager : MonoBehaviour, IOnEventCallback
         if (currentEquipment[SlotIndex] == null)
         {
             currentEquipment[SlotIndex] = newItem;
-            //pv.RPC("settingEquip", RpcTarget.AllBuffered);
 
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+            currentMeshes[SlotIndex] = newMesh;
 
-            settingEquip();
 
         }
-        /*     else
-             {
-                 oldItem = currentEquipment[SlotIndex];
-                 inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيبة تاني
+          else
+          {
+              oldItem = currentEquipment[SlotIndex];
+              inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيبة تاني
 
-                 currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
+              currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
 
-                 Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
+              Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
 
-                 currentEquipment[SlotIndex] = newItem; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
-                 currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
+              currentEquipment[SlotIndex] = newItem; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
+              currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
 
-                 // هنا بضبط new mesh equipment on player and riging 
-                 newMesh.transform.parent = targetMesh.transform;
-                 newMesh.bones = targetMesh.bones;
-                 newMesh.rootBone = targetMesh.rootBone;
-             }*/
+              // هنا بضبط new mesh equipment on player and riging 
+              newMesh.transform.parent = targetMesh.transform;
+              newMesh.bones = targetMesh.bones;
+              newMesh.rootBone = targetMesh.rootBone;
+          }
     }
+    SkinnedMeshRenderer i(SkinnedMeshRenderer newMeshs)
+    {
 
+        return newMeshs;
+    }
 
     public Equipment Unequip(int slotIndex)
     {
@@ -175,20 +143,28 @@ public class EquipmentManager : MonoBehaviour, IOnEventCallback
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
+            if (SlotIndex == 2)
+                TopDefultCloth.enabled = true;
+
+            else if (SlotIndex == 1)
+                BottomDefultCloth.enabled = true;
         }
     }
 
     private void Update()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.U)) //  هيشيل كل الدروع اللي لبستها
         {
             UnequipAll();
         }
-        Player = GameObject.FindGameObjectWithTag("Player");
+       
         if (Player != null)
         {
             targetMesh = Player.GetComponentInChildren<SkinnedMeshRenderer>();
         }
     }
-
 }
+
+

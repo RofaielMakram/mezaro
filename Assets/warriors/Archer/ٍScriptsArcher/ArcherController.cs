@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArcherController : MonoBehaviour
 {
-
+    // defult clothes
+    public SkinnedMeshRenderer pant,bra;
 
     //Move
     public float Horizontal;
@@ -24,6 +25,7 @@ public class ArcherController : MonoBehaviour
 
     private void Start() 
     {
+      
     }
     void Move(Vector2 direction)
     {

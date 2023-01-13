@@ -18,4 +18,4 @@ public class Equipment : Item
     }
 }
 //public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield, Feet }
-public enum EquipmentSlot { Head, TopArmor, BottomArmor, Weapon, Shield, boot}// (0,1,2,3,4)
+public enum EquipmentSlot { Head, TopArmor, BottomArmor, Weapon, Shield, boot}// (0,*2*,*1*,3,4)
