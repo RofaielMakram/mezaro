@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine.EventSystems;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -26,8 +27,10 @@ public class ArcherShooting : MonoBehaviour
 
     void Update()
     {
+        // if point on any UI Windows make nothing
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
             
-           
         //fire
 
         if(Input.GetButton("Fire1"))
