@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 65ee4769e106f8f4fa2398b52788fb1f, type: 3}
   isDefaultItem: 0
   equipSlot: 1
+  warriorSlot: 1
   mesh: {fileID: 894509376646530441, guid: 1975a82d49917ab42989fe55ccca1b38, type: 3}

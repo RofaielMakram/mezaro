@@ -34,37 +34,48 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
 
     [SerializeField]
     SkinnedMeshRenderer TopDefultCloth, BottomDefultCloth;
+    [SerializeField]
+    PersonalWarriorType numTypeWarrior;
     private void Start()
     {
         inventory = Inventory.instance;
 
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = new Equipment[numSlots];
-        currentMeshes = new SkinnedMeshRenderer[numSlots];
-        print(numSlots);
+        int EquipnumSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;// know lenth (num Equipment  Slot)
+
+        currentEquipment = new Equipment[EquipnumSlots];
+        currentMeshes = new SkinnedMeshRenderer[EquipnumSlots];
+        print(" Current Equip num Slot: " + EquipnumSlots);
+        
         //Control Clothes
         Player = GameObject.FindGameObjectWithTag("Player");
         TopDefultCloth = Player.GetComponent<ArcherController>().pant;
         BottomDefultCloth = Player.GetComponent<ArcherController>().bra;
+        //Use type my Warrior
+        numTypeWarrior = Player.GetComponent<WarriorIdentity>().personalWarriorType;
+        print(numTypeWarrior);
     }
 
 
-    int SlotIndex;
+    int EquipSlotIndex;
     SkinnedMeshRenderer newMesh;
 
-    
     public void Equip(Equipment newItem)
     {
-        SlotIndex = (int)newItem.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
+        PersonalWarriorType WrriorSlotIndex = newItem.warriorSlot;// Warrior type for that equip like(Warrior Sword, Archer, Wizard)
+        if (WrriorSlotIndex != numTypeWarrior)
+            return;
+
+        EquipSlotIndex = (int)newItem.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
+       
         //   Test
-        if (SlotIndex == 2)
+        if (EquipSlotIndex == 2)
              TopDefultCloth.enabled = false;
            
-        else if (SlotIndex == 1)
+        else if (EquipSlotIndex == 1)
              BottomDefultCloth.enabled = false;
-            ///////////////////////////////////////
+        ///////////////////////////////////////
 
-            newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+        newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
 
 
         Equipment oldItem = null;
@@ -75,38 +86,38 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
         }
 
 
-        if (currentEquipment[SlotIndex] == null)
+        if (currentEquipment[EquipSlotIndex] == null)
         {
-            currentEquipment[SlotIndex] = newItem;
+            currentEquipment[EquipSlotIndex] = newItem;
 
             newMesh.transform.parent = targetMesh.transform;
             newMesh.bones = targetMesh.bones;
             newMesh.rootBone = targetMesh.rootBone;
-            currentMeshes[SlotIndex] = newMesh;
+            currentMeshes[EquipSlotIndex] = newMesh;
 
 
         }
           else
           {
-              oldItem = currentEquipment[SlotIndex];
+              oldItem = currentEquipment[EquipSlotIndex];
               inventory.Add(oldItem);  //بيضيف الاداة اللي هيتبدل بيها الجديدة للحقيبة تاني
 
-              currentEquipment[SlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
+              currentEquipment[EquipSlotIndex] = null; // CurrentEquipment هنشيل الاداة القديمة من ال
 
-              Destroy(currentMeshes[SlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
+              Destroy(currentMeshes[EquipSlotIndex].gameObject); // هنا بقي هنمسح الاداة القديمة اللي لابسها اللاعب خالص
 
-              currentEquipment[SlotIndex] = newItem; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
-              currentMeshes[SlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
+              currentEquipment[EquipSlotIndex] = newItem; // currentEquipment هنا هنضيف الاداة الجديدة في ليستة 
+              currentMeshes[EquipSlotIndex] = newMesh; // currentMeshes هنا هنضيف الاداة الجديدة في ليستة
 
               // هنا بضبط new mesh equipment on player and riging 
               newMesh.transform.parent = targetMesh.transform;
               newMesh.bones = targetMesh.bones;
               newMesh.rootBone = targetMesh.rootBone;
           }
+        newItem.RemoveFromInventory();
     }
     SkinnedMeshRenderer i(SkinnedMeshRenderer newMeshs)
     {
-
         return newMeshs;
     }
 
@@ -143,10 +154,10 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
-            if (SlotIndex == 2)
+            if (EquipSlotIndex == 2)
                 TopDefultCloth.enabled = true;
 
-            else if (SlotIndex == 1)
+            else if (EquipSlotIndex == 1)
                 BottomDefultCloth.enabled = true;
         }
     }
