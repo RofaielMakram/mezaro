@@ -923,7 +923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898734507}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.94, y: 0, z: 183.22}
+  m_LocalPosition: {x: 1.056, y: 0.844, z: 219.926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6467,6 +6467,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6644109532170005037, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 278.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644109532216828112, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644109532216828112, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -278.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644109532216828112, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 579.15125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644109532216828113, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6644109532585202325, guid: 54de3d0b577710c4b92ea599b98c48f5,
         type: 3}
       propertyPath: m_Name
@@ -6597,6 +6622,11 @@ PrefabInstance:
       propertyPath: equipmentManager
       value: 
       objectReference: {fileID: 7854644333199554406}
+    - target: {fileID: 6644109532637814669, guid: 54de3d0b577710c4b92ea599b98c48f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6928842900075506661, guid: 54de3d0b577710c4b92ea599b98c48f5,
         type: 3}
       propertyPath: m_AnchorMin.y
