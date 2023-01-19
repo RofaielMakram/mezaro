@@ -9,6 +9,8 @@ public class ArcherShooting : MonoBehaviour
 {
     [SerializeField]
     Camera fbsCamera;
+    [SerializeField]
+    cameraControl _cameraControl;
 
     [SerializeField]
     Animator animator;
@@ -62,7 +64,8 @@ public class ArcherShooting : MonoBehaviour
         {
 
             Debug.Log(_hit.collider.gameObject.name);
-            if (!_hit.collider.gameObject.GetComponent<PhotonView>().IsMine && PhotonNetwork.IsConnected)
+
+            if (PhotonNetwork.IsConnected)//!_hit.collider.gameObject.GetComponent<PhotonView>().IsMine &&
             {
                 if (_hit.collider.gameObject.CompareTag("Player"))
                 {
@@ -74,12 +77,13 @@ public class ArcherShooting : MonoBehaviour
                 if (_hit.collider.gameObject.CompareTag("Player"))
                 {
                     _hit.collider.gameObject.GetComponent<TakingDamage>().TakeDamage(10f);
+                   
                 }
+                //back to defult camera
+                _cameraControl.aiming = false;
             }
             
 
-                
-        
         }
            
     }  

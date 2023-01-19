@@ -16,7 +16,10 @@ public class eventListenerArcher : MonoBehaviour
     [SerializeField]
     TakingDamage _damage;
 
-    
+    [SerializeField]
+    cameraControl _cameraControl;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,10 @@ public class eventListenerArcher : MonoBehaviour
     }
 
     #region ArcherShootingScript
-
+    public void setAim() 
+    {
+        _cameraControl.aiming = true;
+    }
     public void ShotingAnim()
     {
         _archershoting.EventAnim();
@@ -37,7 +43,7 @@ public class eventListenerArcher : MonoBehaviour
 
     public void DisActiveArrow()
     {
-        _archershoting.DisActiveArrowEvent();
+        //_archershoting.DisActiveArrowEvent();
     }
 
     #endregion
