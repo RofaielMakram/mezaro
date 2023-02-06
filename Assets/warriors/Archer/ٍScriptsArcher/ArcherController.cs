@@ -47,12 +47,9 @@ public class ArcherController : MonoBehaviour
         Dive();
         Punch();
         Kick();
-<<<<<<< HEAD
+
         AimMoveDefualt();
         AimMove();
-=======
-        
->>>>>>> 7b09098d90653d10260f5de580f31496573bd556
     }
     
     void Move()
@@ -84,25 +81,21 @@ public class ArcherController : MonoBehaviour
     public void Sprint()
     {
         if(Input.GetKey(KeyCode.LeftShift)){
-<<<<<<< HEAD
-            // maxRunSpeed = 6;
-=======
+        
             maxRunSpeed = 6;
             animator.SetLayerWeight(3, 0);
->>>>>>> 7b09098d90653d10260f5de580f31496573bd556
             animator.SetBool("sprint", true);
         }else
         {
             maxRunSpeed = 3;
             animator.SetBool("sprint", false);
-           
         }
 
-        // if(Input.GetButton("Fire1"))
-        // {
-        //      maxRunSpeed = 3;
-        //     animator.SetBool("sprint", false);
-        // }
+        if(Input.GetButton("Fire1"))
+        {
+            maxRunSpeed = 3;
+            animator.SetBool("sprint", false);
+        }
     }
 
     public void AimMoveDefualt()

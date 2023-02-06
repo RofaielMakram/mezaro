@@ -56,10 +56,7 @@ public class ArcherShooting : MonoBehaviour
     public void EventAnim()
     {
 
-
             //Reset fireTimer
-           
-
 
         RaycastHit _hit;
         Ray ray = fbsCamera.ViewportPointToRay(new Vector3(0.5f,0.5f));
