@@ -8,6 +8,8 @@ public class ArcherController : MonoBehaviour
     public SkinnedMeshRenderer pant,bra;
 
     //Move
+    [SerializeField]
+    cameraControl camera;
     public float Horizontal;
     public float Vertical;
     public float maxRunSpeed;
@@ -25,7 +27,7 @@ public class ArcherController : MonoBehaviour
 
     private void Start() 
     {
-      
+        
     }
     void Move(Vector2 direction)
     {
@@ -43,6 +45,7 @@ public class ArcherController : MonoBehaviour
         Dive();
         Punch();
         Kick();
+        
     }
     
     void Move()
@@ -51,6 +54,11 @@ public class ArcherController : MonoBehaviour
 
         Vector2 direction = new Vector2(Vertical * runSpeed, Horizontal * runSpeed); 
         Move(direction);
+        //test
+        if (maxRunSpeed < 6 && camera.aiming == false)
+        {
+            animator.SetLayerWeight(3, 0.6f);
+        }
     }
 
     void motion() 
@@ -70,11 +78,13 @@ public class ArcherController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftShift)){
             maxRunSpeed = 6;
+            animator.SetLayerWeight(3, 0);
             animator.SetBool("sprint", true);
         }else
         {
             maxRunSpeed = 3;
             animator.SetBool("sprint", false);
+           
         }
 
         if(Input.GetButton("Fire1"))

@@ -21,7 +21,7 @@ public class MouseLookY2 : MonoBehaviour
     {
         mouseY = Input.GetAxis("Mouse Y") * mouseSensetivity * Time.deltaTime;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -60f, 60f);
+        xRotation = Mathf.Clamp(xRotation, -56f, 19f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

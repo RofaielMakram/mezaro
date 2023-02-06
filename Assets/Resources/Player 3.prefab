@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 4901794223019624458}
   - component: {fileID: 6295963694444567106}
   - component: {fileID: 7527306891723546263}
+  - component: {fileID: 7796225986366347906}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Player
@@ -401,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pant: {fileID: 6639266873766521435}
   bra: {fileID: 2544694339785403146}
+  camera: {fileID: 6282019530956849337}
   Horizontal: 0
   Vertical: 0
   maxRunSpeed: 0
@@ -662,6 +664,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalWarriorType: 1
+--- !u!114 &7796225986366347906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315998054211507438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59199beda1dfa4b4799fd3c9563cefd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3043282297507520541}
+  mouseSensetivity: 900
+  mouseY: 0
+  xRotation: 0
 --- !u!1 &392751153317670620
 GameObject:
   m_ObjectHideFlags: 0

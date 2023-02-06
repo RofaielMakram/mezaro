@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class eventListenerArcher : MonoBehaviour
 {
+    Animator animator;
      [SerializeField]
     ArcherShooting _archershoting;
 
@@ -23,17 +24,20 @@ public class eventListenerArcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     #region ArcherShootingScript
     public void setAim() 
     {
         _cameraControl.aiming = true;
+        animator.SetBool("IsAiming",true);
+        animator.SetLayerWeight(3, 0f);
     }
     public void ShotingAnim()
     {
         _archershoting.EventAnim();
+        animator.SetBool("IsAiming", false);
     }
 
     public void DrawArrow()
