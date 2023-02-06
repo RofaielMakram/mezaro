@@ -21,6 +21,8 @@ public class ArcherController : MonoBehaviour
     //Animation
     [SerializeField]Animator animator;
 
+    public bool aim;
+
 
 
     private void Start() 
@@ -43,6 +45,8 @@ public class ArcherController : MonoBehaviour
         Dive();
         Punch();
         Kick();
+        AimMoveDefualt();
+        AimMove();
     }
     
     void Move()
@@ -66,10 +70,10 @@ public class ArcherController : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, RotateX,0.0f);
     }
 
-    void Sprint()
+    public void Sprint()
     {
         if(Input.GetKey(KeyCode.LeftShift)){
-            maxRunSpeed = 6;
+            // maxRunSpeed = 6;
             animator.SetBool("sprint", true);
         }else
         {
@@ -77,10 +81,26 @@ public class ArcherController : MonoBehaviour
             animator.SetBool("sprint", false);
         }
 
-        if(Input.GetButton("Fire1"))
+        // if(Input.GetButton("Fire1"))
+        // {
+        //      maxRunSpeed = 3;
+        //     animator.SetBool("sprint", false);
+        // }
+    }
+
+    public void AimMoveDefualt()
+    {
+        if (aim == false) 
         {
-             maxRunSpeed = 3;
-            animator.SetBool("sprint", false);
+            maxRunSpeed = 6;
+        }
+    }
+
+    public void AimMove()
+    {
+        if (aim == true) 
+        {
+            maxRunSpeed = 3;
         }
     }
 

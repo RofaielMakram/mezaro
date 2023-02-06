@@ -19,6 +19,9 @@ public class eventListenerArcher : MonoBehaviour
     [SerializeField]
     cameraControl _cameraControl;
 
+    [SerializeField]
+    ArcherController _ArcherController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,11 @@ public class eventListenerArcher : MonoBehaviour
     public void setAim() 
     {
         _cameraControl.aiming = true;
+    }
+    
+    public void AimMovee() 
+    {
+        _ArcherController.aim = true;
     }
     public void ShotingAnim()
     {

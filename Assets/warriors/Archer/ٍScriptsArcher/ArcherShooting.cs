@@ -13,10 +13,15 @@ public class ArcherShooting : MonoBehaviour
     cameraControl _cameraControl;
 
     [SerializeField]
+    ArcherController _ArcherController;
+
+
+    [SerializeField]
     Animator animator;
 
     public GameObject activeGameObject;
     public GameObject disactiveGameObject;
+
 
 
 
@@ -81,6 +86,7 @@ public class ArcherShooting : MonoBehaviour
                 }
                 //back to defult camera
                 _cameraControl.aiming = false;
+                _ArcherController.aim = false;
             }
             
 
