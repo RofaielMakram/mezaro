@@ -13,10 +13,15 @@ public class ArcherShooting : MonoBehaviour
     cameraControl _cameraControl;
 
     [SerializeField]
+    ArcherController _ArcherController;
+
+
+    [SerializeField]
     Animator animator;
 
     public GameObject activeGameObject;
     public GameObject disactiveGameObject;
+
 
 
 
@@ -49,7 +54,14 @@ public class ArcherShooting : MonoBehaviour
     
 
     public void EventAnim()
+<<<<<<< HEAD
     {      
+=======
+    {
+
+            //Reset fireTimer
+
+>>>>>>> c03083e7e0c9d9080f1e2520cb19b0dd3b655e53
         RaycastHit _hit;
         Ray ray = fbsCamera.ViewportPointToRay(new Vector3(0.5f,0.5f));
 
@@ -75,6 +87,7 @@ public class ArcherShooting : MonoBehaviour
                 }
                 //back to defult camera
                 _cameraControl.aiming = false;
+                _ArcherController.aim = false;
             }
             
 
