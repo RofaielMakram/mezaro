@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &66426538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8736910643157339076, guid: 49077a79924e2f445a88180e10b5877c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1143961541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6975ce83685683e48aba3ad5f761b9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &81158551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7942895572314594152, guid: 11dc9a40ff8cab64d873b3ceeac82b49,
@@ -1186,11 +1198,21 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5651731001798876438, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: _ArcherController
+      value: 
+      objectReference: {fileID: 66426538}
     - target: {fileID: 6994788083698539615, guid: 49077a79924e2f445a88180e10b5877c,
         type: 3}
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7320663904286979573, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: _ArcherController
+      value: 
+      objectReference: {fileID: 66426538}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49077a79924e2f445a88180e10b5877c, type: 3}
 --- !u!1001 &1269642288

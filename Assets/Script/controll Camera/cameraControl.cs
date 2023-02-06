@@ -25,16 +25,7 @@ public class cameraControl : MonoBehaviour
     {
         defultCamera();
         AimCamera();
-/*
-        if (Input.GetMouseButton(1))
-        {
-            aiming=true;
-        }
-        else 
-        {
-            aiming = false;
-        }
-       */
+
     }
 
     public void defultCamera() 
