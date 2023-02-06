@@ -661,7 +661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &946962805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,6 +1009,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7320663904286979573, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: _ArcherController
+      value: 
+      objectReference: {fileID: 1878614546}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49077a79924e2f445a88180e10b5877c, type: 3}
 --- !u!1 &1607962610
@@ -1188,6 +1193,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859911353}
   m_CullTransparentMesh: 0
+--- !u!114 &1878614546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8736910643157339076, guid: 49077a79924e2f445a88180e10b5877c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1417704310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6975ce83685683e48aba3ad5f761b9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046213737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3970651521646214427, guid: a64d40708c74c21428cfb6b55b259b4b,

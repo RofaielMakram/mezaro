@@ -48,8 +48,8 @@ public class ArcherController : MonoBehaviour
         Punch();
         Kick();
 
-        AimMoveDefualt();
-        AimMove();
+        //AimMoveDefualt();
+        //AimMove();
     }
     
     void Move()
