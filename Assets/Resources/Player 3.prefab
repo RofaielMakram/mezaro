@@ -334,6 +334,8 @@ GameObject:
   - component: {fileID: 6295963694444567106}
   - component: {fileID: 7527306891723546263}
   - component: {fileID: 7796225986366347906}
+  - component: {fileID: 1279555591}
+  - component: {fileID: 1279555576}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Player
@@ -372,7 +374,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &8132306401771930011
 CapsuleCollider:
@@ -384,7 +386,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.39
+  m_Radius: 0.4
   m_Height: 1.86
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
@@ -403,6 +405,7 @@ MonoBehaviour:
   pant: {fileID: 6639266873766521435}
   bra: {fileID: 2544694339785403146}
   camera: {fileID: 6282019530956849337}
+  gravity: 15
   Horizontal: 0
   Vertical: 0
   maxRunSpeed: 0
@@ -410,6 +413,7 @@ MonoBehaviour:
   maxSpeedRotate: 2
   SpeedRotate: 0
   animator: {fileID: 3043282297507520541}
+  aim: 0
 --- !u!114 &5651731001798876438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +684,37 @@ MonoBehaviour:
   mouseSensetivity: 900
   mouseY: 0
   xRotation: 0
+--- !u!143 &1279555591
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315998054211507438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1279555576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315998054211507438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34bf717fa9eafd4caaf41ddee7fd066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &392751153317670620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,6 +4324,7 @@ MonoBehaviour:
   _FootSound: {fileID: 4934955779819962253}
   _damage: {fileID: 5284297517111675115}
   _cameraControl: {fileID: 6282019530956849337}
+  _ArcherController: {fileID: 8736910643157339076}
 --- !u!1 &8707506146335585869
 GameObject:
   m_ObjectHideFlags: 0

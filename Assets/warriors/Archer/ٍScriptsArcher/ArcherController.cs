@@ -5,11 +5,15 @@ using UnityEngine;
 public class ArcherController : MonoBehaviour
 {
     // defult clothes
-    public SkinnedMeshRenderer pant,bra;
+    public SkinnedMeshRenderer pant, bra;
 
     //Move
     [SerializeField]
     cameraControl camera;
+
+    [SerializeField]
+    float gravity;
+    private CharacterController controller;
     public float Horizontal;
     public float Vertical;
     public float maxRunSpeed;
@@ -21,20 +25,17 @@ public class ArcherController : MonoBehaviour
     private float RotateX;
 
     //Animation
-    [SerializeField]Animator animator;
+    [SerializeField] Animator animator;
 
     public bool aim;
 
 
 
-    private void Start() 
+    private void Start()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
-    void Move(Vector2 direction)
-    {
-        transform.position += transform.forward * direction.x * Time.deltaTime + transform.right * direction.y * Time.deltaTime;
-    }
+
 
     void Update()
     {
@@ -51,13 +52,20 @@ public class ArcherController : MonoBehaviour
         //AimMoveDefualt();
         //AimMove();
     }
-    
+    void Move(Vector2 direction)
+    {
+        transform.position += transform.forward * direction.x * Time.deltaTime + transform.right * direction.y * Time.deltaTime;
+    }
     void Move()
     {
         runSpeed = maxRunSpeed;
 
-        Vector2 direction = new Vector2(Vertical * runSpeed, Horizontal * runSpeed); 
-        Move(direction);
+        Vector3 direction = new Vector3(Horizontal * runSpeed, 0, Vertical * runSpeed);
+        //Move(direction);
+        direction = transform.TransformDirection(direction);
+        direction.y -= gravity;
+        controller.Move(direction * Time.deltaTime);
+
         //test
         if (maxRunSpeed < 6 && camera.aiming == false)
         {
@@ -65,7 +73,7 @@ public class ArcherController : MonoBehaviour
         }
     }
 
-    void motion() 
+    void motion()
     {
         animator.SetFloat("Vertical", Vertical);
         animator.SetFloat("Horizontal", Horizontal);
@@ -74,24 +82,26 @@ public class ArcherController : MonoBehaviour
     void Rotate()
     {
         SpeedRotate = maxSpeedRotate;
-        RotateX += SpeedRotate*Input.GetAxis("Mouse X");
-        transform.eulerAngles = new Vector3(0.0f, RotateX,0.0f);
+        RotateX += SpeedRotate * Input.GetAxis("Mouse X");
+        transform.eulerAngles = new Vector3(0.0f, RotateX, 0.0f);
     }
 
     public void Sprint()
     {
-        if(Input.GetKey(KeyCode.LeftShift)){
-        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+
             maxRunSpeed = 6;
             animator.SetLayerWeight(3, 0);
             animator.SetBool("sprint", true);
-        }else
+        }
+        else
         {
             maxRunSpeed = 3;
             animator.SetBool("sprint", false);
         }
 
-        if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             maxRunSpeed = 3;
             animator.SetBool("sprint", false);
@@ -100,7 +110,7 @@ public class ArcherController : MonoBehaviour
 
     public void AimMoveDefualt()
     {
-        if (aim == false) 
+        if (aim == false)
         {
             maxRunSpeed = 6;
         }
@@ -108,7 +118,7 @@ public class ArcherController : MonoBehaviour
 
     public void AimMove()
     {
-        if (aim == true) 
+        if (aim == true)
         {
             maxRunSpeed = 3;
         }
@@ -117,10 +127,12 @@ public class ArcherController : MonoBehaviour
 
     void Dive()
     {
-        if(Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             animator.SetBool("dive", true);
-        
-        }else
+
+        }
+        else
         {
             animator.SetBool("dive", false);
         }
@@ -128,10 +140,12 @@ public class ArcherController : MonoBehaviour
 
     void Punch()
     {
-        if(Input.GetKey(KeyCode.G)){
+        if (Input.GetKey(KeyCode.G))
+        {
             animator.SetBool("melee punch", true);
-        
-        }else
+
+        }
+        else
         {
             animator.SetBool("melee punch", false);
         }
@@ -140,14 +154,16 @@ public class ArcherController : MonoBehaviour
 
     void Kick()
     {
-        if(Input.GetKey(KeyCode.H)){
+        if (Input.GetKey(KeyCode.H))
+        {
             animator.SetBool("melee kick", true);
-        
-        }else
+
+        }
+        else
         {
             animator.SetBool("melee kick", false);
         }
     }
-    
-    
+
+
 }

@@ -55,7 +55,7 @@ public class eventListenerArcher : MonoBehaviour
 
     public void DisActiveArrow()
     {
-        //_archershoting.DisActiveArrowEvent();
+        _archershoting.DisActiveArrowEvent();
     }
 
     #endregion
