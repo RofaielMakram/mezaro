@@ -9,7 +9,7 @@ public class TakingDamage : MonoBehaviourPunCallbacks
     [SerializeField]
     Image healthBar;
 
-
+    [SerializeField]
     private float health;
     public float startHealth = 100;
 
