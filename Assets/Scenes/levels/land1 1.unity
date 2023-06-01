@@ -10304,6 +10304,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3930911364472474426, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930911364472474426, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4675958686270423167, guid: 49077a79924e2f445a88180e10b5877c,
         type: 3}
       propertyPath: sceneViewId
@@ -10324,6 +10334,17 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7705740684899953003, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374922045775667021, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 127279d577f25ac4ea17dae3782e5074,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49077a79924e2f445a88180e10b5877c, type: 3}
 --- !u!1 &1858729069
