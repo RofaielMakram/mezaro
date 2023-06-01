@@ -10299,6 +10299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3
       objectReference: {fileID: 0}
+    - target: {fileID: 315998054211507438, guid: 49077a79924e2f445a88180e10b5877c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4675958686270423167, guid: 49077a79924e2f445a88180e10b5877c,
         type: 3}
       propertyPath: sceneViewId
@@ -10336,7 +10341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1858729070
 Transform:
   m_ObjectHideFlags: 0
@@ -10420,6 +10425,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1279555590}
+    - target: {fileID: 3944193285267978017, guid: 513709458d7393149b65dc4081a0d5f3,
+        type: 3}
+      propertyPath: attack
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4214805427346573344, guid: 513709458d7393149b65dc4081a0d5f3,
         type: 3}
       propertyPath: m_Name
@@ -10428,7 +10438,7 @@ PrefabInstance:
     - target: {fileID: 4214805427346573344, guid: 513709458d7393149b65dc4081a0d5f3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513709458d7393149b65dc4081a0d5f3, type: 3}
