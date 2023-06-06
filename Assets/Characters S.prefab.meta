@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Characters S.prefab.meta
 guid: 8f63ac8b84824914a85c618fc57f8e1a
+========
+guid: b6f158f2fe46d4c499fd090a2a97c671
+>>>>>>>> parent of e2f3e75 (add weapon & fix archer aiming system):Assets/warriors/Archer/weapos/arrow.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
