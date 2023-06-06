@@ -123,6 +123,7 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &39441222
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +295,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 0
 =======
 >>>>>>> parent of e2f3e75 (add weapon & fix archer aiming system)
+=======
+>>>>>>> parent of e2f3e75 (add weapon & fix archer aiming system)
 --- !u!114 &66426538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +342,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2782688152102414972, guid: 11dc9a40ff8cab64d873b3ceeac82b49, type: 3}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &163587795
 GameObject:
@@ -414,6 +418,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163587795}
   m_CullTransparentMesh: 0
+=======
+>>>>>>> parent of e2f3e75 (add weapon & fix archer aiming system)
 =======
 >>>>>>> parent of e2f3e75 (add weapon & fix archer aiming system)
 --- !u!1 &233142508
