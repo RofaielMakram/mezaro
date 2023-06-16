@@ -10,6 +10,8 @@ public class Equipment : Item
 
     public SkinnedMeshRenderer mesh;
 
+    public GameObject[] skills;
+    
     public override void Use()
     {
         base.Use();

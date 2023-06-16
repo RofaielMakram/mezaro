@@ -429,8 +429,8 @@ MonoBehaviour:
   fbsCamera: {fileID: 3703591424805217714}
   _cameraControl: {fileID: 6282019530956849337}
   animator: {fileID: 3043282297507520541}
-  activeGameObject: {fileID: 0}
-  disactiveGameObject: {fileID: 0}
+  currentBowSkills: []
+  instantiatePointArrow: {fileID: 2118054681082231375}
 --- !u!114 &5284297517111675115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +998,7 @@ Transform:
   - {fileID: 8610733724247572374}
   - {fileID: 1746355335121101672}
   - {fileID: 1678417442427151177}
+  - {fileID: 3292838316447759068}
   m_Father: {fileID: 6643514563542739225}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1331,6 +1332,36 @@ Transform:
   m_Father: {fileID: 6496666154882355620}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118054681082231375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3292838316447759068}
+  m_Layer: 0
+  m_Name: instantiate point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3292838316447759068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118054681082231375}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6496666154882355620}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &2189956360353176967
 GameObject:
   m_ObjectHideFlags: 0

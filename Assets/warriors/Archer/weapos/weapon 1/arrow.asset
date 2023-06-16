@@ -18,3 +18,5 @@ MonoBehaviour:
   equipSlot: 3
   warriorSlot: 1
   mesh: {fileID: 4070616801338602927, guid: c1cb8647bff886445afe6a1e86ee750e, type: 3}
+  skills:
+  - {fileID: 6406238698348326391, guid: 6ac3f5014bd28504cb8f23b630b0391b, type: 3}

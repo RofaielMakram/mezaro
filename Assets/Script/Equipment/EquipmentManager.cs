@@ -48,11 +48,13 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
         
         //Control Clothes
         Player = GameObject.FindGameObjectWithTag("Player");
+
         TopDefultCloth = Player.GetComponent<ArcherController>().pant;
         BottomDefultCloth = Player.GetComponent<ArcherController>().bra;
+
         //Use type my Warrior
         numTypeWarrior = Player.GetComponent<WarriorIdentity>().personalWarriorType;
-        print(numTypeWarrior);
+        
     }
 
 
@@ -73,6 +75,10 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
            
         else if (EquipSlotIndex == 1)
              BottomDefultCloth.enabled = false;
+
+        // Sent Current List Skills Weapon 
+        if (newItem.skills != null)
+            Player.GetComponent<ArcherShooting>().currentBowSkills = newItem.skills;
         ///////////////////////////////////////
 
         newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);

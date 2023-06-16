@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-
+// original اللي هيتنقله التحديث 
 public class ArcherShooting : MonoBehaviour
 {
     [SerializeField]
@@ -15,9 +15,10 @@ public class ArcherShooting : MonoBehaviour
     [SerializeField]
     Animator animator;
 
-    public GameObject activeGameObject;
-    public GameObject disactiveGameObject;
+    public GameObject[] currentBowSkills;
 
+    [SerializeField]
+    GameObject instantiatePointArrow;
 
 
 
@@ -80,16 +81,24 @@ public class ArcherShooting : MonoBehaviour
 
         }
            
-    }  
+    }
 
+    GameObject currentEffect;
     public void ArrowEvent()
     {
-        activeGameObject.SetActive(true);
+        if (currentBowSkills[0] != null)
+        {
+
+            currentEffect = Instantiate(currentBowSkills[0], instantiatePointArrow.transform.position, instantiatePointArrow.transform.rotation);
+
+            currentEffect.transform.SetParent(instantiatePointArrow.transform);
+        }
 
     }
 
     public void DisActiveArrowEvent()
     {
-        disactiveGameObject.SetActive(false);
+        if (currentEffect != null)
+            Destroy(currentEffect);
     } 
 }

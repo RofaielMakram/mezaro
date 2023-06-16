@@ -36,8 +36,10 @@ public class eventListenerArcher : MonoBehaviour
         _cameraControl.aiming = true;
         animator.SetBool("IsAiming",true);
         animator.SetLayerWeight(3, 0f);
+        _archershoting.ArrowEvent();
+
     }
-    
+
     public void AimMovee() 
     {
         _ArcherController.aim = true;
@@ -50,7 +52,7 @@ public class eventListenerArcher : MonoBehaviour
 
     public void DrawArrow()
     {
-        _archershoting.ArrowEvent();
+       // _archershoting.ArrowEvent();
     }
 
     public void DisActiveArrow()
