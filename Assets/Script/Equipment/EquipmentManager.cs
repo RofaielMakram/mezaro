@@ -34,6 +34,7 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
 
     [SerializeField]
     SkinnedMeshRenderer TopDefultCloth, BottomDefultCloth;
+
     [SerializeField]
     PersonalWarriorType numTypeWarrior;
     private void Start()
@@ -44,14 +45,14 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
 
         currentEquipment = new Equipment[EquipnumSlots];
         currentMeshes = new SkinnedMeshRenderer[EquipnumSlots];
-        print(" Current Equip num Slot: " + EquipnumSlots);
+  
         
         //Control Clothes
         Player = GameObject.FindGameObjectWithTag("Player");
 
         TopDefultCloth = Player.GetComponent<ArcherController>().pant;
         BottomDefultCloth = Player.GetComponent<ArcherController>().bra;
-
+        
         //Use type my Warrior
         numTypeWarrior = Player.GetComponent<WarriorIdentity>().personalWarriorType;
         
@@ -70,14 +71,16 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
         EquipSlotIndex = (int)newItem.equipSlot; // (دة رقم الدرع في الاربع خانات للبس اللاعب مثال (خانة السلاح , خانة الدرع, خانة الدرع العلوي 
        
         //   Test
-        if (EquipSlotIndex == 2)
+
+        if (EquipSlotIndex == 2) //دة اللي بيخفي اللبس الاساسي لم البس لبس من فوق
              TopDefultCloth.enabled = false;
            
-        else if (EquipSlotIndex == 1)
+        if (EquipSlotIndex == 1)
              BottomDefultCloth.enabled = false;
-
+       
         // Sent Current List Skills Weapon 
-        if (newItem.skills != null)
+
+        if (newItem.skills != null && EquipSlotIndex == 3)
             Player.GetComponent<ArcherShooting>().currentBowSkills = newItem.skills;
         ///////////////////////////////////////
 
@@ -100,8 +103,6 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
             newMesh.bones = targetMesh.bones;
             newMesh.rootBone = targetMesh.rootBone;
             currentMeshes[EquipSlotIndex] = newMesh;
-
-
         }
           else
           {
@@ -121,10 +122,6 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
               newMesh.rootBone = targetMesh.rootBone;
           }
         newItem.RemoveFromInventory();
-    }
-    SkinnedMeshRenderer i(SkinnedMeshRenderer newMeshs)
-    {
-        return newMeshs;
     }
 
     public Equipment Unequip(int slotIndex)
@@ -160,18 +157,19 @@ public class EquipmentManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
-            if (EquipSlotIndex == 2)
-                TopDefultCloth.enabled = true;
 
-            else if (EquipSlotIndex == 1)
+            // enaple defult clothes
+            if (EquipSlotIndex == i) { 
+                TopDefultCloth.enabled = true;
                 BottomDefultCloth.enabled = true;
+            }
         }
+        Player.GetComponent<ArcherShooting>().currentBowSkills = null;
     }
 
     private void Update()
     {
         
-
         if (Input.GetKeyDown(KeyCode.U)) //  هيشيل كل الدروع اللي لبستها
         {
             UnequipAll();

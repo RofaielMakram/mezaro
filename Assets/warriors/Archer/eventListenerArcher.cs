@@ -57,9 +57,14 @@ public class eventListenerArcher : MonoBehaviour
 
     public void DisActiveArrow()
     {
+        animator.SetLayerWeight(2, 0.1f);
         _archershoting.DisActiveArrowEvent();
     }
 
+    public void DefultSettingAim()
+    {
+        animator.SetLayerWeight(2, 1f);
+    }
     #endregion
 
     #region  BowSoundsScript

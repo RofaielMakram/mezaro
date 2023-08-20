@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4659216f0478194cbcee5f21112c31b, type: 3}
+  m_Name: armor 1 boot
+  m_EditorClassIdentifier: 
+  name: boot 1
+  icon: {fileID: 21300000, guid: 0c265e549ca7ae140bbaaa287202ca49, type: 3}
+  isDefaultItem: 0
+  equipSlot: 5
+  warriorSlot: 1
+  mesh: {fileID: 4520911674522091175, guid: d7dc212628c5b6a48b8bd2d0f1f0ef7d, type: 3}
+  skills: []

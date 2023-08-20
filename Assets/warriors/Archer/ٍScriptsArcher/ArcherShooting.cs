@@ -20,6 +20,7 @@ public class ArcherShooting : MonoBehaviour
     [SerializeField]
     GameObject instantiatePointArrow;
 
+    Quaternion r = Quaternion.Euler(170f, 0f, 0f);
 
 
     // Start is called before the first frame update
@@ -38,7 +39,6 @@ public class ArcherShooting : MonoBehaviour
 
         if(Input.GetButton("Fire1"))
         {
-            Debug.Log("ok");
             animator.SetBool("fire", true);
         }
         else
@@ -47,8 +47,8 @@ public class ArcherShooting : MonoBehaviour
         }
             
     }
-    
 
+    GameObject currentEffect;
     public void EventAnim()
     {      
         RaycastHit _hit;
@@ -69,24 +69,35 @@ public class ArcherShooting : MonoBehaviour
             }
             else 
             {
+
                 if (_hit.collider.gameObject.CompareTag("Player"))
                 {
                     _hit.collider.gameObject.GetComponent<TakingDamage>().TakeDamage(10f);
                    
                 }
-                //back to defult camera
-                _cameraControl.aiming = false;
             }
-            
+            // instantiete explosion
+            if (currentBowSkills.Length > 0 && currentBowSkills[2] != null) {
+                currentEffect = Instantiate(currentBowSkills[2], _hit.point, Quaternion.LookRotation(_hit.point-transform.position));
+                Destroy(currentEffect, 1);
+            }
 
         }
+
+            if (currentBowSkills.Length > 0 && currentBowSkills[1] != null) {
+                currentEffect = Instantiate(currentBowSkills[1], instantiatePointArrow.transform.position, Quaternion.Euler(170f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+                Destroy(currentEffect, 1);
+            }
+            
+            //back to defult camera
+            _cameraControl.aiming = false;
            
     }
 
-    GameObject currentEffect;
+    
     public void ArrowEvent()
     {
-        if (currentBowSkills[0] != null)
+        if (currentBowSkills.Length > 0 && currentBowSkills[0] != null)
         {
 
             currentEffect = Instantiate(currentBowSkills[0], instantiatePointArrow.transform.position, instantiatePointArrow.transform.rotation);

@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4659216f0478194cbcee5f21112c31b, type: 3}
-  m_Name: arrow
+  m_Name: armor1 pant
   m_EditorClassIdentifier: 
-  name: bow1
-  icon: {fileID: 21300000, guid: 2c5a7995a4921a349b3dc6515a07720b, type: 3}
+  name: bant 1
+  icon: {fileID: 21300000, guid: fde5963b676a7334baf242de9d11cf5e, type: 3}
   isDefaultItem: 0
-  equipSlot: 3
+  equipSlot: 2
   warriorSlot: 1
-  mesh: {fileID: 4070616801338602927, guid: c1cb8647bff886445afe6a1e86ee750e, type: 3}
-  skills:
-  - {fileID: 6406238698348326391, guid: 6ac3f5014bd28504cb8f23b630b0391b, type: 3}
+  mesh: {fileID: 7643627372530054121, guid: 125c9226c692bb94abdd5b34dad942fa, type: 3}
+  skills: []

@@ -75,7 +75,6 @@ public class ReferTo : MonoBehaviour
         }
         
         focus = null;
-      //  motor.StopFollowingTarget();
     }
 }
 

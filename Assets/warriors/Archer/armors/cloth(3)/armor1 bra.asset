@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4659216f0478194cbcee5f21112c31b, type: 3}
-  m_Name: armor1
+  m_Name: armor1 bra
   m_EditorClassIdentifier: 
-  name: armor 1
-  icon: {fileID: 21300000, guid: 65ee4769e106f8f4fa2398b52788fb1f, type: 3}
+  name: bra1
+  icon: {fileID: 21300000, guid: 30b6f099fb7729c43bc6ebd93e94d582, type: 3}
   isDefaultItem: 0
   equipSlot: 1
   warriorSlot: 1
-  mesh: {fileID: 894509376646530441, guid: 1975a82d49917ab42989fe55ccca1b38, type: 3}
+  mesh: {fileID: 6159955112035224663, guid: d1afe31f17ddb4c4aa4bd474c921dec0, type: 3}
+  skills: []
